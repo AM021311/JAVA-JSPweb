@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.io.*,java.sql.*,java.util.ArrayList" errorPage="" %>
+<%@ page contentType="text/html; charset=BIG5" language="java" import="java.util.*,java.io.*,java.sql.*,java.util.ArrayList" errorPage="" %>
 <HTML>
 <TITLE>Save</TITLE>
 <body>
@@ -7,12 +7,12 @@
 	//public static void main(String[]args)throws Exception{
 
 		//List myList = new ArrayList();
-		ArrayList<String>status=new ArrayList<>();//å­¸è™Ÿ	
-		ArrayList<String>computernum=new ArrayList<>();//é›»è…¦ä½å­
-		Set<String> alpha = new HashSet<String>();//åˆ¤æ–·æœ‰å¹¾å€‹ä¸é‡è¤‡è‹±æ–‡å­—æ¯
+		ArrayList status=new ArrayList();//¾Ç¸¹	
+		ArrayList computernum=new ArrayList();//¹q¸£¦ì¤l
+		Set alpha = new HashSet();//§PÂ_¦³´X­Ó¤£­«½Æ­^¤å¦r¥À
 		
 		File f1 = new File("save.txt");
-		String fr = application.getRealPath(f1);
+		String fr = application.getRealPath("save.txt");
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fr)));
 		String statusmessage="";
 		int max=0;
@@ -22,20 +22,20 @@
 		int length=0;
 		while((statusmessage=br.readLine())!=null){
 
-			length=statusmessage.indexOf(" ");//ç©ºç™½ä½ç½®åœ¨å“ª?
-			for(int i=0;i<length;i++){//è®€ä½ç½®
+			length=statusmessage.indexOf(" ");//ªÅ¥Õ¦ì¸m¦b­ş?
+			for(int i=0;i<length;i++){//Åª¦ì¸m
 
 				message+=statusmessage.charAt(i)+"";				
 
 			}
 			computernum.add(message);
-			alpha.add(message.charAt(0)+"");//å­—æ¯é‡è¤‡å—?æ²’æœ‰çš„è©±åŠ å…¥å­—æ¯ã€‚
+			alpha.add(message.charAt(0)+"");//¦r¥À­«½Æ¶Ü?¨S¦³ªº¸Ü¥[¤J¦r¥À¡C
 
 			if(message.charAt(0)=='A'){
 				max=Integer.valueOf(message.replace("A",""));
-			}//å–å‡ºæ•¸å­—å¤§å°ã€‚
+			}//¨ú¥X¼Æ¦r¤j¤p¡C
 			message="";
-			for(int j=length+1;j<statusmessage.length();j++){//è®€å­¸è™Ÿ
+			for(int j=length+1;j<statusmessage.length();j++){//Åª¾Ç¸¹
 
 				message+=statusmessage.charAt(j)+"";
 
@@ -45,13 +45,13 @@
 		}
 		for(int i=0;i<status.size();i++){
 			
-			System.out.println(computernum.get(i)+"\t"+status.get(i));//å°
+			System.out.println(computernum.get(i)+"\t"+status.get(i));//¦L
 
 		}
 		String [][]stustatus=new String[alpha.size()][max];
 		String [][]stuid=new String[alpha.size()][max];
 		int k=0;
-		for(int i=0;i<alpha.size();i++){//æŠŠä½ç½®+å­¸è™Ÿå­˜æˆ2ç¶­é™£åˆ—
+		for(int i=0;i<alpha.size();i++){//§â¦ì¸m+¾Ç¸¹¦s¦¨2ºû°}¦C
 
 				for(int j=0;j<max;j++){
 					stustatus[i][j]=computernum.get(k);
@@ -59,8 +59,8 @@
 					k++;
 				}
 		}
-		computernum.clear();//æ¸…ç©º
-		status.clear();	//æ¸…ç©º
+		computernum.clear();//²MªÅ
+		status.clear();	//²MªÅ
 	//}
 //}
 %>
